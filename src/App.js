@@ -1,22 +1,19 @@
 import * as React from "react";
-import styled from "styled-components";
 import { Reset } from "styled-reset";
+import styled from "styled-components";
 
-const Nav = styled.div`
-  background-color: teal;
-  width: 400px;
+const NavBar = styled.div`
   height: 300px;
-  margin-top: 300px;
+  background-color: violet;
+  position: absolute;
+  top: 0px;
 `;
 
 function App() {
   return (
     <>
       <Reset />
-      <Nav>테스트 입니다.</Nav>
-      <div className="App">
-        <h1>새로운 레퍼지토리</h1>
-      </div>
+      <NavBar>네브바입니다</NavBar>
     </>
   );
 }
