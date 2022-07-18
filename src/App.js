@@ -5,6 +5,7 @@ import { Reset } from "styled-reset";
 const Nav = styled.div`
   background-color: teal;
   width: 400px;
+  height: 300px;
   margin-top: 300px;
 `;
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <Reset />
-      <Nav>Hi</Nav>
+      <Nav>테스트 입니다.</Nav>
       <div className="App">
         <h1>새로운 레퍼지토리</h1>
       </div>
