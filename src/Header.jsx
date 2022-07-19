@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
-  height: 50px;
-  background-color: #1abc9c;
+  height: 60px;
+  background-color: #21c531;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,7 +15,7 @@ const SearchBox = styled.div`
   display: flex;
   border-radius: 10px;
   border: 2px solid green;
-  /* background-color: green; */
+  background-color: green;
   align-items: center;
   padding: 0 5px;
   gap: 5px;
@@ -47,10 +47,11 @@ const ButtonBox = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding-right: 20px;
+  gap: 10px;
 `;
 
 const Button = styled.button`
-  background-color: #1abc9c;
+  background-color: #21c531;
   height: 40px;
   border: none;
   border-radius: 5px;
@@ -68,38 +69,58 @@ const Button = styled.button`
   }
 `;
 
-// const FoldingBox = styled.div`
-//   position: absolute;
-//   right: 10px;
-//   z-index: 1;
-//   width: 300px;
-//   min-height: 400px;
-//   background-color: white;
-//   margin: 10px;
-//   border-radius: 5px;
-//   box-shadow: 2px 2px 5px gray;
-//   padding: 10px;
-//   border: 1px solid #eee;
-// `;
+const Flex = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
 const FoldingBox = styled.div`
+  margin-top: 5px;
+  margin-right: 50px;
   position: relative;
-  margin: 50px;
-  padding: 20px;
+  padding: 10px 10px 10px 10px;
+  background: white;
+  border-radius: 5px;
+  border: #7f7f7f solid 1px;
+  position: absolute;
+  font-size: 16px;
+  text-align: left;
   width: 200px;
-  height: 60px;
-  color: #fff;
-  border-radius: 10px;
-  background-color: #ff7979;
-  :after {
+  height: 100px;
+  &:after {
     content: '';
     position: absolute;
-    top: -40px;
-    right: 100px;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 30px solid #ff7979;
+    border-style: solid;
+    border-width: 0 10px 15px 10px;
+    border-color: white transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    right: 20px;
   }
+  &:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 15px 10px;
+    border-color: #7f7f7f transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -16.5px;
+    right: 20px;
+  }
+`;
+
+const Profile = styled.div`
+  height: 30px;
+  width: 30px;
+  background-color: #b9b7b7;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function Header({ logo, buttons, foldableContent }) {
@@ -124,9 +145,18 @@ function Header({ logo, buttons, foldableContent }) {
           >
             <FontAwesomeIcon icon={faBell} size='lg' color='white' />
           </Button>
+          <Profile>
+            <FontAwesomeIcon icon={faUser} color='white' />
+          </Profile>
         </ButtonBox>
       </Container>
-      {foldingBoxOpened ? <FoldingBox>{foldableContent}</FoldingBox> : ''}
+      {foldingBoxOpened ? (
+        <Flex>
+          <FoldingBox>{foldableContent}</FoldingBox>{' '}
+        </Flex>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
