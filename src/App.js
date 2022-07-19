@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Reset } from 'styled-reset';
 import styled from 'styled-components';
+import Header from './Header';
 
 const NavBar = styled.div`
   height: 300px;
@@ -11,7 +12,7 @@ function App() {
   return (
     <>
       <Reset />
-      <NavBar>네브바입니다</NavBar>
+      <Header logo='U-Band' />
     </>
   );
 }
