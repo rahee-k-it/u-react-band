@@ -7,22 +7,19 @@ import { useRecoilValue } from "recoil";
 import { clickAtom, darkAtom } from "./atom";
 
 const NavBar = styled.div`
-  height: 300px;
+  height: 100px;
   background-color: violet;
-  position: absolute;
-  z-index: 2;
-  top: 0px;
 `;
 //삭제할 예정
 const Div = styled.div`
   height: 200vh;
   opacity: ${(props) => props.isDark ?? 1};
   width: 100%;
+  background-color: #f5f8fa;
 `;
 
 const NavBox = styled.div`
-  margin-top: 300px;
-  background-color: #f5f8fa;
+  margin-top: 100px;
   height: 100%;
   width: 33%;
   position: fixed;

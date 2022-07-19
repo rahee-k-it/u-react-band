@@ -134,36 +134,38 @@ function WriteContent() {
           </Button>
         </Header>
         <Main>
-          <MainHeader>
-            <FontAwesomeIcon icon={faB} />
-            <FontAwesomeIcon icon={faItalic} />
-            <FontAwesomeIcon icon={faUnderline} />
-            <FontAwesomeIcon icon={faHeading} />
-            <FontAwesomeIcon icon={faStrikethrough} />
-          </MainHeader>
+          <form>
+            <MainHeader>
+              <FontAwesomeIcon icon={faB} />
+              <FontAwesomeIcon icon={faItalic} />
+              <FontAwesomeIcon icon={faUnderline} />
+              <FontAwesomeIcon icon={faHeading} />
+              <FontAwesomeIcon icon={faStrikethrough} />
+            </MainHeader>
 
-          <MainContent placeholder="새로운 소식을 남겨보세요."></MainContent>
-          <MainFooter>
-            <FontAwesomeIcon icon={faImage} />
-            <FontAwesomeIcon icon={faCirclePlay} />
-            <FontAwesomeIcon icon={faVideo} />
-            <FontAwesomeIcon icon={faPaperclip} />
-            <FontAwesomeIcon icon={faCalendarDays} />
-            <FontAwesomeIcon icon={faImage} />
-            <FontAwesomeIcon icon={faCirclePlay} />
-            <FontAwesomeIcon icon={faVideo} />
-            <FontAwesomeIcon icon={faPaperclip} />
-            <FontAwesomeIcon icon={faCalendarDays} />
-            <FontAwesomeIcon icon={faEllipsisH} />
-          </MainFooter>
+            <MainContent placeholder="새로운 소식을 남겨보세요."></MainContent>
+            <MainFooter>
+              <FontAwesomeIcon icon={faImage} />
+              <FontAwesomeIcon icon={faCirclePlay} />
+              <FontAwesomeIcon icon={faVideo} />
+              <FontAwesomeIcon icon={faPaperclip} />
+              <FontAwesomeIcon icon={faCalendarDays} />
+              <FontAwesomeIcon icon={faImage} />
+              <FontAwesomeIcon icon={faCirclePlay} />
+              <FontAwesomeIcon icon={faVideo} />
+              <FontAwesomeIcon icon={faPaperclip} />
+              <FontAwesomeIcon icon={faCalendarDays} />
+              <FontAwesomeIcon icon={faEllipsisH} />
+            </MainFooter>
+            <Footer>
+              <div>
+                <FontAwesomeIcon icon={faGear} />
+                <span>글쓰기 설정</span>
+              </div>
+              <button>게시</button>
+            </Footer>
+          </form>
         </Main>
-        <Footer>
-          <div>
-            <FontAwesomeIcon icon={faGear} />
-            <span>글쓰기 설정</span>
-          </div>
-          <button>게시</button>
-        </Footer>
       </WriteContentBox>
     </>
   );
