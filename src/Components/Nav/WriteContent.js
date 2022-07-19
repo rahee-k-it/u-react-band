@@ -16,10 +16,10 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clickAtom, darkAtom } from "../../atom";
+import { clickWriteAtom, darkAtom } from "../../atom";
 
 const WriteContentBox = styled.div`
-  width: 600px;
+  width: 500px;
   box-sizing: border-box;
   height: 400px;
   background-color: white;
@@ -27,7 +27,7 @@ const WriteContentBox = styled.div`
   flex-direction: column;
   position: absolute;
   top: 70px;
-  left: 520px;
+  left: 480px;
   border: 0.1px solid rgba(0, 0, 0, 0.1);
 `;
 
@@ -53,6 +53,7 @@ const Button = styled.button`
   right: 10px;
   opacity: 0.6;
   font-size: 25px;
+  cursor: pointer;
 `;
 
 const Main = styled.div`
@@ -119,9 +120,9 @@ const Footer = styled.div`
 `;
 function WriteContent() {
   const setIsdark = useSetRecoilState(darkAtom);
-  const [clicked, setClicked] = useRecoilState(clickAtom);
+  const [clickWrite, setClickWrite] = useRecoilState(clickWriteAtom);
   const onClick = () => {
-    setClicked(!clicked);
+    setClickWrite(!clickWrite);
     setIsdark((dark) => (dark === 1 ? 0.5 : 1));
   };
   return (

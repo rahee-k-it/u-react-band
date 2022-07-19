@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const clickAtom = atom({
-  key: "clicked",
+export const clickWriteAtom = atom({
+  key: "clickWrite",
   default: false,
 });
 

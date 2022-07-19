@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faAngleRight, faGear } from "@fortawesome/free-solid-svg-icons";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clickAtom, darkAtom } from "../../atom";
+import { clickWriteAtom, darkAtom } from "../../atom";
 
 const Wrapper = styled.div`
   background-color: inherit;
@@ -88,9 +88,9 @@ const BandSetup = styled.div`
 
 function Nav() {
   const setIsdark = useSetRecoilState(darkAtom);
-  const [clicked, setClicked] = useRecoilState(clickAtom);
+  const [clickWrite, setclickWrite] = useRecoilState(clickWriteAtom);
   const onClick = () => {
-    setClicked(!clicked);
+    setclickWrite(!clickWrite);
     setIsdark((dark) => (dark === 1 ? 0.5 : 1));
   };
 

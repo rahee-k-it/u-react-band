@@ -4,13 +4,13 @@ import styled from "styled-components";
 import Nav from "./Components/Nav/Nav";
 import WriteContent from "./Components/Nav/WriteContent";
 import { useRecoilValue } from "recoil";
-import { clickAtom, darkAtom } from "./atom";
+import { clickWriteAtom, darkAtom } from "./atom";
 
 const NavBar = styled.div`
   height: 100px;
   background-color: violet;
 `;
-//삭제할 예정
+
 const Div = styled.div`
   height: 200vh;
   opacity: ${(props) => props.isDark ?? 1};
@@ -32,7 +32,7 @@ const NavBox = styled.div`
 `;
 
 function App() {
-  const clicked = useRecoilValue(clickAtom);
+  const clickWrite = useRecoilValue(clickWriteAtom);
   const isDark = useRecoilValue(darkAtom);
   console.log(isDark);
   return (
@@ -44,7 +44,7 @@ function App() {
           <Nav />
         </NavBox>
       </Div>
-      {clicked ? <WriteContent /> : ""}
+      {clickWrite ? <WriteContent /> : ""}
     </>
   );
 }
