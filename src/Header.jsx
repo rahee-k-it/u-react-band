@@ -2,8 +2,14 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import Tap from './Tap';
+import { Link } from 'react-router-dom';
+const HeaderContainer = styled.div`
+  position: sticky;
+  top: 0;
+`;
 
-const Container = styled.div`
+const TopHeader = styled.div`
   height: 60px;
   background-color: #21c531;
   display: flex;
@@ -50,7 +56,7 @@ const ButtonBox = styled.div`
   gap: 10px;
 `;
 
-const Button = styled.button`
+const HeaderButton = styled.button`
   background-color: #21c531;
   height: 40px;
   border: none;
@@ -66,6 +72,28 @@ const Button = styled.button`
   }
   &:focus {
     opacity: 1;
+  }
+`;
+
+const TapButton = styled.button`
+  background-color: ${({ bgColor }) => `${bgColor ?? 'gray'};`};
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+  opacity: 0.8;
+  &:hover {
+    color: white;
+    opacity: 1;
+  }
+  &:focus {
+    opacity: 1;
+    text-decoration: underline;
   }
 `;
 
@@ -126,8 +154,8 @@ const Profile = styled.div`
 function Header({ logo, buttons, foldableContent }) {
   const [foldingBoxOpened, setFoldingBoxOpened] = useState(false);
   return (
-    <div>
-      <Container>
+    <HeaderContainer>
+      <TopHeader>
         <LogoBox>
           {logo}
           <SearchBox>
@@ -138,18 +166,18 @@ function Header({ logo, buttons, foldableContent }) {
 
         <ButtonBox>
           {buttons}
-          <Button
+          <HeaderButton
             onClick={() => {
               setFoldingBoxOpened(!foldingBoxOpened);
             }}
           >
             <FontAwesomeIcon icon={faBell} size='lg' color='white' />
-          </Button>
+          </HeaderButton>
           <Profile>
             <FontAwesomeIcon icon={faUser} color='white' />
           </Profile>
         </ButtonBox>
-      </Container>
+      </TopHeader>
       {foldingBoxOpened ? (
         <Flex>
           <FoldingBox>{foldableContent}</FoldingBox>{' '}
@@ -157,7 +185,23 @@ function Header({ logo, buttons, foldableContent }) {
       ) : (
         ''
       )}
-    </div>
+      <Tap
+        bgColor='#1FBB00'
+        buttons={
+          <>
+            <Link to='/'>
+              <TapButton bgColor='#1FBB00'>게시글</TapButton>
+            </Link>
+            <Link to='/album'>
+              <TapButton bgColor='#1FBB00'>사진첩</TapButton>
+            </Link>
+            <Link to='/calendar'>
+              <TapButton bgColor='#1FBB00'>일정</TapButton>
+            </Link>
+          </>
+        }
+      />
+    </HeaderContainer>
   );
 }
 
