@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   top: 70px;
   left: 480px;
   opacity: ${(props) => props.isDarkBox};

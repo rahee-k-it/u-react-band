@@ -7,7 +7,7 @@ import { useState } from "react";
 const Wrapper = styled.div`
   width: 300px;
   height: 300px;
-  position: absolute;
+  position: fixed;
   left: 580px;
   top: 180px;
   display: flex;
@@ -84,7 +84,8 @@ function WriteSetup() {
 
   const [click, setClick] = useState(true);
 
-  const onClickToggle = () => {
+  const onClickToggle = (e) => {
+    e.preventDefault();
     setClick(!click);
   };
 
