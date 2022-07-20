@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Nav from "./Components/Nav/Nav";
 import WriteContent from "./Components/Nav/WriteContent";
 import { useRecoilValue } from "recoil";
-import { clickWriteAtom, darkAtom } from "./atom";
+import { clickSetupAtom, clickWriteAtom, darkAtom } from "./atom";
+import WriteSetup from "./Components/Nav/WriteSetup";
 
 const NavBar = styled.div`
   height: 100px;
@@ -14,27 +15,26 @@ const NavBar = styled.div`
 const Div = styled.div`
   height: 200vh;
   opacity: ${(props) => props.isDark ?? 1};
+  top: 0px;
   width: 100%;
-  background-color: #f5f8fa;
 `;
 
 const NavBox = styled.div`
   margin-top: 100px;
   height: 100%;
-  width: 33%;
+  width: 430px;
   position: fixed;
   top: 0px;
   left: 0px;
   display: flex;
   justify-content: flex-end;
   padding: 20px 15px;
-  z-index: 1;
 `;
 
 function App() {
   const clickWrite = useRecoilValue(clickWriteAtom);
   const isDark = useRecoilValue(darkAtom);
-  console.log(isDark);
+  const clickSetup = useRecoilValue(clickSetupAtom);
   return (
     <>
       <Reset />
@@ -45,6 +45,7 @@ function App() {
         </NavBox>
       </Div>
       {clickWrite ? <WriteContent /> : ""}
+      {clickSetup ? <WriteSetup /> : ""}
     </>
   );
 }

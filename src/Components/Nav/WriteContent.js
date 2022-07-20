@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXmark,
@@ -16,9 +16,16 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clickWriteAtom, darkAtom } from "../../atom";
+import { clickSetupAtom, clickWriteAtom, darkAtom, darkWriteBoxAtom } from "../../atom";
 
-const WriteContentBox = styled.div`
+const upComing = keyframes`
+from{
+  top:60px;
+}to{
+  top:80px;
+}
+`;
+const Wrapper = styled.div`
   width: 500px;
   box-sizing: border-box;
   height: 400px;
@@ -28,7 +35,9 @@ const WriteContentBox = styled.div`
   position: absolute;
   top: 70px;
   left: 480px;
+  opacity: ${(props) => props.isDarkBox};
   border: 0.1px solid rgba(0, 0, 0, 0.1);
+  animation: ${upComing} 0.8s ease-in-out;
 `;
 
 const Header = styled.div`
@@ -59,12 +68,10 @@ const Button = styled.button`
 const Main = styled.div`
   margin: 10px 10px;
   height: 75%;
-  box-sizing: border-box;
 `;
 
 const MainHeader = styled.div`
   background-color: #f5f8fa;
-  box-sizing: border-box;
   height: 30px;
   display: flex;
   align-items: center;
@@ -108,6 +115,7 @@ const Footer = styled.div`
   div {
     svg {
       margin-right: 10px;
+      cursor: pointer;
     }
   }
   button {
@@ -116,18 +124,27 @@ const Footer = styled.div`
     background-color: gray;
     color: white;
     padding: 10px 40px;
+    cursor: pointer;
   }
 `;
 function WriteContent() {
   const setIsdark = useSetRecoilState(darkAtom);
+  const [isDarkBox, setIsDarkBox] = useRecoilState(darkWriteBoxAtom);
   const [clickWrite, setClickWrite] = useRecoilState(clickWriteAtom);
+  const [clickSetup, setClickSetup] = useRecoilState(clickSetupAtom);
+
   const onClick = () => {
     setClickWrite(!clickWrite);
     setIsdark((dark) => (dark === 1 ? 0.5 : 1));
   };
+  const onClickSetup = () => {
+    setClickSetup(!clickSetup);
+    setIsDarkBox((dark) => (dark === 1 ? 0.5 : 1));
+  };
+
   return (
     <>
-      <WriteContentBox>
+      <Wrapper isDarkBox={isDarkBox}>
         <Header>
           <span>글쓰기</span>
           <Button onClick={onClick}>
@@ -144,7 +161,10 @@ function WriteContent() {
               <FontAwesomeIcon icon={faStrikethrough} />
             </MainHeader>
 
-            <MainContent placeholder="새로운 소식을 남겨보세요."></MainContent>
+            <MainContent
+              disabled={clickSetup}
+              placeholder="새로운 소식을 남겨보세요."
+            ></MainContent>
             <MainFooter>
               <FontAwesomeIcon icon={faImage} />
               <FontAwesomeIcon icon={faCirclePlay} />
@@ -160,14 +180,14 @@ function WriteContent() {
             </MainFooter>
             <Footer>
               <div>
-                <FontAwesomeIcon icon={faGear} />
+                <FontAwesomeIcon onClick={onClickSetup} icon={faGear} />
                 <span>글쓰기 설정</span>
               </div>
               <button>게시</button>
             </Footer>
           </form>
         </Main>
-      </WriteContentBox>
+      </Wrapper>
     </>
   );
 }

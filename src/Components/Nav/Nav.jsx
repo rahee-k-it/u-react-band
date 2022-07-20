@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   opacity: ${(props) => props.isDark};
+  font-size: 13px;
 `;
 
 const ImgBox = styled.img`
@@ -34,7 +35,7 @@ const MemberBox = styled.div`
   margin: 5px 0px;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 13px;
   span {
     margin-right: 10px;
   }
@@ -69,7 +70,7 @@ const WriteBtn = styled.button`
 const PrivateAlarm = styled.div`
   margin: 5px 0px;
   p {
-    font-size: 13px;
+    font-size: 12px;
     opacity: 0.4;
     font-weight: 600;
     margin: 5px 0px;
@@ -89,6 +90,7 @@ const BandSetup = styled.div`
 function Nav() {
   const setIsdark = useSetRecoilState(darkAtom);
   const [clickWrite, setclickWrite] = useRecoilState(clickWriteAtom);
+
   const onClick = () => {
     setclickWrite(!clickWrite);
     setIsdark((dark) => (dark === 1 ? 0.5 : 1));
@@ -98,7 +100,7 @@ function Nav() {
     <>
       <Wrapper>
         <ImgBox></ImgBox>
-        <NickName>nickname</NickName>
+        <NickName>곰돌이</NickName>
         <MemberBox>
           <span>멤버 1</span>
           <div>

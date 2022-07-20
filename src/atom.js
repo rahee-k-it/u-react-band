@@ -5,7 +5,17 @@ export const clickWriteAtom = atom({
   default: false,
 });
 
+export const clickSetupAtom = atom({
+  key: "clickSetup",
+  default: false,
+});
+
 export const darkAtom = atom({
-  key: "darkAtom",
+  key: "dark",
+  default: 1,
+});
+
+export const darkWriteBoxAtom = atom({
+  key: "darkWrtieBox",
   default: 1,
 });
