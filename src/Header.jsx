@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import Tap from './Tap';
 import { Link } from 'react-router-dom';
+
 const HeaderContainer = styled.div`
   position: sticky;
   top: 0;
@@ -46,6 +47,11 @@ const LogoBox = styled.div`
   color: white;
   font-size: 30px;
   gap: 20px;
+`;
+
+const Logo = styled.div`
+  font-style: inherit;
+  font-weight: 900;
 `;
 
 const ButtonBox = styled.div`
@@ -149,6 +155,14 @@ const Profile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 function Header({ logo, buttons, foldableContent }) {
@@ -157,7 +171,7 @@ function Header({ logo, buttons, foldableContent }) {
     <HeaderContainer>
       <TopHeader>
         <LogoBox>
-          {logo}
+          <Logo>{logo}</Logo>
           <SearchBox>
             <Search />
             <FontAwesomeIcon icon={faMagnifyingGlass} color='white' size='sm' opacity='0.7' cursor='pointer' />
